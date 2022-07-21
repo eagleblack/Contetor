@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+<!--- basic page needs
+================================================== -->
+<meta charset="utf-8">
+<title>Welcome To Contetor</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- mobile specific metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS
+================================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/vendor.css">
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- favicons
+================================================== -->
+<style>
+    .facebook{
+        text-align: center;
+    }
+    .insta-table  {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.insta-table td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.insta-table  tr:nth-child(even){background-color: #f2f2f2;}
+
+.insta-table  tr:hover {background-color: #ddd;}
+
+.insta-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+img {
+    display: block;
+}
+
+.container {
+    max-width: 93.5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.btn {
+    display: inline-block;
+    font: inherit;
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+}
+
+.btn:focus {
+    outline: 0.5rem auto #4d90fe;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+/* Profile Section */
+
+.profile {
+  padding: 5rem 0;  
+}
+
+.profile::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.profile-image {
+    float: left;
+    width: calc(33.333% - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3rem;
+}
+
+.profile-image img {
+    border-radius: 50%;
+}
+
+.profile-user-settings,
+.profile-stats,
+.profile-bio {
+    float: left;
+    width: calc(66.666% - 2rem);
+}
+
+.profile-user-settings {
+    margin-top: 1.1rem;
+}
+
+.profile-user-name {
+    display: inline-block;
+    font-size: 3.2rem;
+    font-weight: 300;
+}
+
+.profile-edit-btn {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    border: 0.1rem solid #dbdbdb;
+    border-radius: 0.3rem;
+    padding: 0 2.4rem;
+    margin-left: 2rem;
+}
+
+.profile-settings-btn {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.profile-stats {
+    margin-top: 2.3rem;
+}
+
+.profile-stats li {
+    display: inline-block;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin-right: 4rem;
+    cursor: pointer;
+}
+
+.profile-stats li:last-of-type {
+    margin-right: 0;
+}
+
+.profile-bio {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 2.3rem;
+}
+
+.profile-real-name,
+.profile-stat-count,
+.profile-edit-btn {
+    font-weight: 600;
+}
+@media screen and (max-width: 40rem) {
+    .profile {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 4rem 0;
+    }
+
+    .profile::after {
+        display: none;
+    }
+
+    .profile-image,
+    .profile-user-settings,
+    .profile-bio,
+    .profile-stats {
+        float: none;
+        width: auto;
+    }
+
+    .profile-image img {
+        width: 7.7rem;
+    }
+
+    .profile-user-settings {
+        flex-basis: calc(100% - 10.7rem);
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+
+    .profile-user-name {
+        font-size: 2.2rem;
+    }
+
+    .profile-edit-btn {
+        order: 1;
+        padding: 0;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .profile-edit-btn {
+        margin-left: 0;
+    }
+
+    .profile-bio {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+    }
+
+    .profile-edit-btn,
+    .profile-bio,
+    .profile-stats {
+        flex-basis: 100%;
+    }
+
+    .profile-stats {
+        order: 1;
+        margin-top: 1.5rem;
+    }
+
+    .profile-stats ul {
+        display: flex;
+        text-align: center;
+        padding: 1.2rem 0;
+        border-top: 0.1rem solid #dadada;
+        border-bottom: 0.1rem solid #dadada;
+    }
+
+    .profile-stats li {
+        font-size: 1.4rem;
+        flex: 1;
+        margin: 0;
+    }
+
+    .profile-stat-count {
+        display: block;
+    }
+}
+</style>
+
+
+</head>
+<body >
+   
+    <script>
+     /* window.onbeforeunload = function() {
+  return "Data will be lost if you leave the page, are you sure?";
+};*/
+      const userData={"biography":"","followers_count":'',"follows_count":'',"media_count":'',
+         "profile_picture_url":'',"username":'',"name":''};
+         const  baseURL= 'https://graph.facebook.com/v14.0/' ;
+        let access_token;
+        let bussinessId;
+      const constants={"FOLLOWER_COUNT":'',"PROFILE_REACH":'',"FOLLOWER_ENGAGEMENT":'',"POST_REACH":''};
+      let profile_reach,follower_engagement,post_reach;
+    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+      console.log('statusChangeCallback');
+      console.log(response);                   // The current login status of the person.
+      if (response.status === 'connected') { 
+        document.getElementById("loggedout-div").style.display="none";    // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+        document.getElementById("logged-in").style.display="block";   // Logged into your webpage and Facebook.
+        EngineFunction(response);  
+      } else {                                 // Not logged into your webpage or we are unable to tell.
+        
+      }
+    }
+  
+   
+    function checkLoginState() {               // Called when a person is finished with the Login Button.
+      FB.getLoginStatus(function(response) {   // See the onlogin handler
+        statusChangeCallback(response);
+      });
+    }
+  
+  
+    window.fbAsyncInit = function() {
+      FB.init({
+              appId            : '1952015241854222',
+              autoLogAppEvents : true,
+              xfbml            : true,
+              version          : 'v14.0'
+            });
+  
+  
+      FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+        statusChangeCallback(response);        // Returns the login status.
+      });
+      
+    };
+    
+    const EngineFunction=async (response)=>{ 
+      
+        const accessToken=response.authResponse.accessToken;
+        const userID=response.authResponse.userID ;
+        access_token=accessToken;
+        const finalURLPage=baseURL+ `${userID}/accounts?access_token=${accessToken}`;
+        const response_pageid =  await fetch(finalURLPage);
+        const dataPage =  await response_pageid.json();  
+        for (const key in dataPage.data) {
+         const parentGuest=document.getElementById("facebook-profile");
+         var childGuest = document.createElement("div");
+         var childGuestContent=document.createElement("p");
+         var childGuestButton = document.createElement("button");
+         childGuestButton.id=dataPage.data[key].id;
+         childGuestContent.id=dataPage.data[key].id+"cont"
+         childGuestButton.addEventListener('click', myFancyFunction);
+         childGuestContent.innerHTML="Facebook Page:-"+dataPage.data[key].name;
+         childGuest.className="facebook"
+         childGuestButton.innerHTML="Select This Page";
+         parentGuest.parentNode.insertBefore(childGuest, parentGuest.nextSibling);
+         childGuest.appendChild(childGuestContent);
+         childGuest.appendChild(childGuestButton);
+        }     
+      }
+      const myFancyFunction=async(e)=>{
+        const pageId=e.target.id;
+        console.log(pageId)
+        const finalURLInsta=baseURL+`${pageId}?fields=instagram_business_account&access_token=${access_token}`;
+        const responseInsta = await fetch(finalURLInsta);
+        const dataInsta = await responseInsta.json();
+        const instagramId=dataInsta.instagram_business_account;
+        const parentGuest=document.getElementById(pageId+"cont");
+        var childGuest = document.createElement("p");
+        childGuest.innerHTML="Fetching Data!please wait..."
+        parentGuest.parentNode.insertBefore(childGuest, parentGuest.nextSibling);
+        console.log(instagramId)
+        if(instagramId===undefined)
+        {
+          
+          childGuest.innerHTML="No instagram account linked with this page"
+          document.getElementById(pageId).disabled = true;
+           
+        }
+        else
+        {
+        const bussinessId=instagramId.id
+        const igBaseURL=baseURL+`${bussinessId}?fields=username,name,followers_count,media_count,profile_picture_url,biography,follows_count&access_token=${access_token}`;
+        const responseIG=await fetch(igBaseURL);
+        const dataIg = await responseIG.json();
+       
+        userData['username']=dataIg.username;
+        userData['followers_count']=dataIg.followers_count;
+        userData['media_count']=dataIg.media_count;
+        userData['profile_picture_url']=dataIg.profile_picture_url;
+        userData['biography']=dataIg.biography;
+        userData['follows_count']=dataIg.follows_count;
+        userData['name']=dataIg.name;
+        console.log(userData)
+        childGuest.innerHTML="";
+        const childTable= document.createElement("table");
+        childTable.className="insta-table";
+        childGuest.appendChild(childTable);
+        const usernameNode= document.createElement("tr");
+        const usernameNodetd= document.createElement("td");
+        const usernameNodetd1= document.createElement("td");
+        usernameNodetd.innerHTML="UserName";
+        usernameNodetd1.innerHTML=dataIg.username;
+        var followers_count = document.createElement("tr");
+        var followers_counttd = document.createElement("td");
+        var followers_counttd1= document.createElement("td");
+        followers_counttd.innerHTML="Follower Count";
+        followers_counttd1.innerHTML=dataIg.followers_count;
+        var media_count = document.createElement("tr");
+
+        var media_counttd = document.createElement("td");
+        var media_counttd1= document.createElement("td");
+        media_counttd.innerHTML="Media Count";
+        media_counttd1.innerHTML=dataIg.media_count;
+        
+        childTable.appendChild(usernameNode);
+        usernameNode.appendChild(usernameNodetd);
+        usernameNode.appendChild(usernameNodetd1);
+        childTable.appendChild(followers_count);
+        followers_count.appendChild(followers_counttd);
+        followers_count.appendChild(followers_counttd1);
+        childTable.appendChild(media_count);
+        media_count.appendChild(media_counttd);
+        media_count.appendChild(media_counttd1);
+        document.getElementById(pageId).remove();
+        var childGuestButton = document.createElement("button");
+        childGuestButton.innerHTML="Replicate this Profile"
+        childGuestButton.id=bussinessId;
+        childGuest.appendChild(childGuestButton);
+        childGuestButton.addEventListener('click',replicate);
+
+        }
+      }
+      const replicate=(e)=>{
+        document.getElementById("logged-in").style.display="none";    // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+        document.getElementById("profile_img").src=userData['profile_picture_url']; 
+        document.getElementById("username").innerHTML=userData['username']; 
+        document.getElementById("posts").innerHTML=userData['media_count']; 
+        document.getElementById("followers").innerHTML=userData['followers_count']; 
+        document.getElementById("following").innerHTML=userData['follows_count']; 
+        document.getElementById("name").innerHTML=userData['name']; 
+        document.getElementById("bio").innerHTML=userData['biography'];  
+        document.getElementById("final").style.display="block"; 
+        console.log(userData);
+        const instabussinessId=e.target.id;
+        bussinessId=instabussinessId;
+        
+      }
+      const getFinalScore =()=>{
+        console.log("we are just there");
+        console.log(bussinessId);
+        document.getElementById("calculate_score").disabled = true;
+        if(userData['followers_count']<100)
+        {
+          document.getElementById("console").innerHTML = "Follower count less than 100, cannot calulate score.";
+        }
+        else
+        {
+         
+          const follower_progrees= document.getElementById("follower_count");
+          if(userData['followers_count']>=100 && userData['followers_count']<3000)
+          {
+            constants['FOLLOWER_COUNT']="EXTREMLY_LOW"
+            follower_progrees.value="20"
+          }
+          if(userData['followers_count']>=3000 && userData['followers_count']<10000)
+          {
+            constants['FOLLOWER_COUNT']="LOW"
+            follower_progrees.value="40"
+          }
+          if(userData['followers_count']>=10000 && userData['followers_count']<80000)
+          {
+            constants['FOLLOWER_COUNT']="MODERATE"
+            follower_progrees.value="60"
+          }
+          if(userData['followers_count']>=80000 && userData['followers_count']<600000)
+          {
+            constants['FOLLOWER_COUNT']="HIGH"
+            follower_progrees.value="80"
+          }
+          if(userData['followers_count']>=600000)
+          {
+            constants['FOLLOWER_COUNT']="EXTREMLY_HIGH"
+            follower_progrees.value="100"
+          }
+          document.getElementById("console").style.fontSize="12px";
+          fetchProfileReachRatio();
+          
+        }
+      }  
+    const logout=()=>{
+        FB.logout();
+      }
+    async function fetchProfileReachRatio() {
+      const follower_count=parseInt(userData['followers_count']);
+      document.getElementById("console").innerHTML = "fetching required data.....";
+      document.getElementById("console1").innerHTML = "calculating profile reach ratio for a month......";
+    try {
+      const reachURL=baseURL+`${bussinessId}/insights?metric=reach&period=days_28&access_token=${access_token}`;
+      const responseReach=await fetch(reachURL);
+      const dataReach=await responseReach.json();
+      const profileReachRatio=parseInt(dataReach.data[0].values[0].value)/follower_count;
+      const profileReachRatio_p= document.getElementById("profileReachRatio");
+      profile_reach=profileReachRatio
+      
+      if(profileReachRatio<=0.15)
+      {
+        
+        constants['PROFILE_REACH']="EXTREMLY_LOW"
+        profileReachRatio_p.value="20"
+      }
+      if(profileReachRatio>0.15 && profileReachRatio<0.4 )
+      {
+        constants['PROFILE_REACH']="LOW"
+        profileReachRatio_p.value="40"
+      }
+      if(profileReachRatio>=0.4 && profileReachRatio<7 )
+      {
+        constants['PROFILE_REACH']="MODERATE"
+        profileReachRatio_p.value="60"
+      }
+      if(profileReachRatio>=0.7 && profileReachRatio<1 )
+      {
+        constants['PROFILE_REACH']="HIGH"
+        profileReachRatio_p.value="80"
+      }
+      if(profileReachRatio>=1 )
+      {
+        constants['PROFILE_REACH']="EXTREMLY_HIGH"
+        profileReachRatio_p.value="100"
+      }
+   
+      document.getElementById("console1").innerHTML = "calculating profile reach ratio for a month......";
+      getFollowerEngagementRatio();
+    } catch (error) {
+        console.log(error);
+    }
+}
+async function getFollowerEngagementRatio() {
+      const follower_count=parseInt(userData['followers_count']);
+      document.getElementById("console").innerHTML = "fetching required data.....";
+      document.getElementById("console1").innerHTML = "calculating profile reach ratio for a month......";
+    try {
+      const onlineFollowerURL=baseURL+`${bussinessId}/insights?metric=online_followers&since=1657604433&until=1658122833&period=lifetime&access_token=${access_token}`;
+    const responseFollower=await fetch(onlineFollowerURL);
+    const dataFollower=await responseFollower.json();
+    const follwoerData=dataFollower.data[0].values;
+    const dataArray=[];
+    let Maxfollower=0;
+    for (const key in follwoerData) {
+        const onlinedataValue= follwoerData[key].value;
+        for (const key in onlinedataValue)
+        {
+            dataArray.push(onlinedataValue[key]);
+        }
+        const max=Math.max(...dataArray)
+        Maxfollower=Maxfollower+max;
+   
+         dataArray.length=0;
+    }
+    
+    const averageOnlineFollower=Maxfollower/6;
+    const followerEngagementratio=Math.round(averageOnlineFollower)/follower_count;
+    console.log(followerEngagementratio);
+    const followerEngagementratio_p= document.getElementById("followerEngagementratio");
+    follower_engagement=followerEngagementratio;
+    if(followerEngagementratio<=0.15)
+      {
+        constants['FOLLOWER_ENGAGEMENT']="EXTREMLY_LOW"
+        followerEngagementratio_p.value="20"
+      }
+      if(followerEngagementratio>0.15 && followerEngagementratio<0.4 )
+      {
+        constants['FOLLOWER_ENGAGEMENT']="LOW"
+        followerEngagementratio_p.value="40"
+      }
+      if(followerEngagementratio>=0.4 && followerEngagementratio<7 )
+      {
+        constants['FOLLOWER_ENGAGEMENT']="MODERATE"
+        followerEngagementratio_p.value="60"
+      }
+      if(followerEngagementratio>=0.7 && followerEngagementratio<1 )
+      {
+        constants['FOLLOWER_ENGAGEMENT']="HIGH"
+        followerEngagementratio_p.value="80"
+      }
+      if(followerEngagementratio>=1 )
+      {
+        constants['FOLLOWER_ENGAGEMENT']="EXTREMLY_HIGH"
+        followerEngagementratio_p.value="100"
+      }
+    document.getElementById("progress_").style.display="block";
+    document.getElementById("console1").innerHTML = "Getting post Data....";
+    getPostData();
+    } catch (error) {
+        console.log(error);
+    }
+}
+const getPostData=async()=>{
+try {
+   const iggetPost=baseURL+`${bussinessId}?fields=business_discovery.username(byememesta){media{id,media_type,media_url,owner,timestamp}}&access_token=${access_token}`;
+        const responsePost=await fetch(iggetPost);
+        const dataPost = await responsePost.json();
+        const psotdata=dataPost.business_discovery.media.data;
+        let count=0;
+        let totalReach=0;
+        document.getElementById("console1").innerHTML = "Anylizing post Data....";
+        for (const key in psotdata) {
+            if(psotdata[key].media_type=='IMAGE' || psotdata[key].media_type=='CAROUSEL_ALBUM' )
+            {
+                //insights?metric=reach,engagement,saved
+                const postId=psotdata[key].id;
+                const postURL=baseURL+`${postId}/insights?metric=reach,engagement,saved&access_token=${access_token}`;
+                const responseInsight=await fetch(postURL);
+                const finalInsight = await responseInsight.json();
+                totalReach=totalReach+finalInsight.data[0].values[0].value
+                
+                count++;
+                if(count==5)
+                {
+                    break;
+                }
+                //get last 5 post Insight And break out of this loop.
+            }
+           
+        }
+        const follower_count=parseInt(userData['followers_count']);
+        postReachAvg=totalReach/5;
+        postReachratio=  postReachAvg/follower_count;
+       console.log(postReachratio);
+    const postReachratio_p= document.getElementById("postReachratio");
+    post_reach=postReachratio;
+    if(postReachratio<=0.15)
+      {
+        constants['POST_REACH']="EXTREMLY_LOW"
+        postReachratio_p.value="20"
+      }
+      if(postReachratio>0.15 && postReachratio<0.4 )
+      {
+        constants['POST_REACH']="LOW"
+        postReachratio_p.value="40"
+      }
+      if(postReachratio>=0.4 && postReachratio<7 )
+      {
+        constants['POST_REACH']="MODERATE"
+        postReachratio_p.value="60"
+      }
+      if(postReachratio>=0.7 && postReachratio<1 )
+      {
+        constants['POST_REACH']="HIGH"
+        postReachratio_p.value="80"
+      }
+      if(postReachratio>=1 )
+      {
+        constants['POST_REACH']="EXTREMLY_HIGH"
+        postReachratio_p.value="100"
+      }
+        document.getElementById("post_ratio").style.display="block";
+        document.getElementById("console1").innerHTML = "Cheking fake Follower....";
+  
+        if(constants['FOLLOWER_COUNT']=="EXTREMLY_LOW" )
+        {
+          if(post_reach>7 && profile_reach>7)
+          {
+           finalScore=finalScore+10
+           document.getElementById("console1").innerHTML = "Your Credit Score is="+finalScore;
+          }
+
+        }
+        if(constants['FOLLOWER_COUNT']=="LOW")
+        {
+          if(constants['PROFILE_REACH']=="EXTREMLY_LOW" && constants['FOLLOWER_ENGAGEMENT']=="EXTREMLY_LOW" &&  constants[' POST_REACH']=="EXTREMLY_LOW" )
+          {
+            
+          }
+        }
+
+        } 
+        catch (error) 
+        {
+          console.log(error)
+        }
+        }
+  </script>
+  
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+      <div id="fb-root"></div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=1952015241854222&autoLogAppEvents=1" nonce="dpvYrWot"></script>
+    
+
+    <div class="main-header"> 
+        <header class="s-intro__header"> 
+            <div class="s-intro__logo">
+                <a class="logo" href="index.html">
+                    <img src="images/logo.jpg" alt="Homepage">
+                    
+                </a>
+                
+            </div>
+                <i class="fa fa-bars navigation"  onclick="openNav()" style="font-size:32px"></i>
+              
+        </header>  <!-- s-intro__header -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+              <a href="#">Become A creator</a>
+              <a href="credit-engine.html">Check your credit score</a>
+              <a href="products.html">Products</a>
+              <a href="#">Contact Us</a>
+              <a href="#">Term of service</a>
+              <a href="#">Privacy Policy</a>
+            </div>
+          </div>
+    </div>
+        
+       
+    
+        <!-- <div class="s-intro__notify">
+            <button type="button" class="btn--stroke btn--small ss-modal-trigger">
+                Notify Me
+            </button>
+        </div>  s-intro__notify -->
+    
+    <div id="loggedout-div">
+        <div style="max-width:500px;margin: 0px auto;margin-top:100px;">
+            <img src="images/Credit Engine.png" style="width:100%;"/>   
+    
+    </div>
+    <div style="margin-left:10px">
+        <div class="row tab-content__item-header">
+            <div class="column" style="text-align:center;">
+                <h2>Credit Engine.</h2>
+                <h6>Check Your creator Credit score based on your Instagram profile.</h6>
+            </div>
+        </div>
+        <p>This credit Engine uses Instagram Graph Api by facebbok to access your Instagram Account.<br>
+    
+       </p>
+        <div class="info" style=" margin-bottom: 15px;
+            padding: 4px 12px; background-color: #e7f3fe;
+    border-left: 6px solid #2196F3;">
+                <p><strong>Info!</strong> We never store any data from your Instagram Account except for Username and final credit score.<br>
+                Your Accounts will be auto logout once your credit score is checked. </p>
+              </div>
+              <p>
+                Before you start checking your credit score make sure you have following alreday set up.
+                <ul>
+                    <li>An Instagram acount with minimum of 100 followers.
+                    </li>
+                    <li>
+                        That profile must be active within one month time.
+                    </li>
+                    <li>
+                        Must have 5 post(video and reels not supported currently.)
+                    </li>
+                    <li>
+                        A facebook account and a Facebook page linked with your instagram account.
+                    </li>
+                </ul>
+              </p>
+              <h6>
+                Once You are ready Click on Continue with facebbok button below to Start checking your credit score.
+              </h6>
+              <div style="text-align:center">
+                <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" 
+                data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginState();"></div>
+            </div>
+            <h5>
+                How Does it work?
+            </h5>
+            <p>
+                <ul>
+                    <li>
+                        Once you click on continue with facebook a login dialog will pop-up from facebook.<br>
+                        Login into your facebook account.
+    
+                    </li>
+                    <li>
+                        If your facebook account has multiple page with it.<br>
+                        Grab the page id of the page that your instagram account is linked with and enter it in the input box
+                        and click on continue.
+                    </li>
+                    <li>
+                        Verify the instagram profile  that you want to check credit score for.
+                    </li>
+                    <li>
+                       Sit back and relax while system generate credit score for you.<br>
+                       It might take 2-5 minute to complete depending on your network.
+                    </li>
+    
+                </ul>
+               
+               
+            </p>
+            <button onclick="logout()">Logout</button>
+    </div>
+    </div>  
+  <!---Logged In Div-->
+  <div id="logged-in" style="display:none;margin-top:90px;" >
+    <div style="text-align: center;">
+        <p>Select Your facebook Page linked with Instagram profile</p>
+    </div>
+    <div id="facebook-profile">
+
+    </div>
+  </div>
+  <div id="final"style="display:none;margin-top:100px;">
+    <header>
+
+      <div class="container" >
+        <p id="console"></p>
+        <p id="console1" style="font-size:12px; "></p>
+        <p id="console2" style="font-size:12px;color:red; "></p>
+        <div id="progress_" style="display:none;">
+          <ul>
+            <li>
+              Follower Count<br>
+              <progress id="follower_count" value="0" max="100"></progress>
+             
+            </li>
+            <li>
+              Profile Reach ratio<br>
+              <progress id="profileReachRatio" value="0" max="100"></progress>
+            
+            </li>
+            <li>
+              Follower Engagement Ratio<br>
+              <progress id="followerEngagementratio" value="0" max="100"></progress>
+            </li>
+            <li id="post_ratio" style="display:none">
+              Post Reach Ratio<br>
+              <progress id="postReachratio" value="0" max="100"></progress>
+            </li>
+          </ul>
+        
+        </div>
+       
+       
+        <button onclick="getFinalScore()"id="calculate_score">Calculate Your credit Score.</button>
+        <button onclick="logout()">Terminate & Logout</button>
+        <div class="profile">
+    
+          <div class="profile-image">
+    
+            <img id="profile_img"src=""||"hello.png" alt="">
+    
+          </div>
+    
+          <div class="profile-user-settings">
+    
+            <h1 id="username" class="profile-user-name">janedoe_</h1>
+      </div>
+    
+          <div class="profile-stats">
+    
+            <ul>
+              <li><span id="posts"class="profile-stat-count"></span> posts</li>
+              <li><span  id="followers"class="profile-stat-count"></span> followers</li>
+              <li><span  id="following" class="profile-stat-count"></span> following</li>
+            </ul>
+    
+          </div>
+    
+          <div class="profile-bio">
+    
+            <p><span id="name" class="profile-real-name">Jane Doe</span></p>
+            <p id="bio"></p>
+    
+          </div>
+         
+        </div>
+        <!-- End of profile section -->
+        
+      </div>
+      <!-- End of container -->
+    
+    </header>
+  </div>
+    <script>
+       
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+          }
+          
+          /* Close */
+          function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+          }
+    
+    </script>
+    <script src="js/plugins.js"></script>
+
+    
+</body>

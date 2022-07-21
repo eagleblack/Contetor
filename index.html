@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+<!--- basic page needs
+================================================== -->
+<meta charset="utf-8">
+<title>Welcome To Contetor</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- mobile specific metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS
+================================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/vendor.css">
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- favicons
+================================================== -->
+
+
+</head>
+
+<body id="top" class="ss-preload theme-particles">
+
+
+<!-- preloader
+================================================== -->
+<div id="preloader">
+    <div id="loader" class="dots-fade">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+
+<!-- intro
+================================================== -->
+<section id="intro" class="s-intro">
+
+    <div id="particles-js" class="s-intro__particles"></div>
+
+    <header class="s-intro__header"> 
+        <div class="s-intro__logo">
+            <a class="logo" href="index.html">
+                <img src="images/logo.jpg" alt="Homepage">
+                
+            </a>
+            
+        </div>
+            <i class="fa fa-bars navigation"  onclick="openNav()" style="font-size:32px"></i>
+          
+    </header>  <!-- s-intro__header -->
+    <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+          <a href="#">Become A creator</a>
+          <a href="credit-engine.html">Check your credit score</a>
+          <a href="products.html">Products</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Term of service</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    <div class="row s-intro__content">
+        <div class="column">
+
+            <div class="text-pretitle">
+                Hello Creator!<i class="fa fa-hand-stop-o" style="margin-left:10px;margin-right:10px;font-size:24px"></i>
+                we are glad that you came here!<br>
+                Nice to meet you.
+            </div>
+            <h2 class="text-huge-title" style="color:white;">
+            We are preparing something <br>
+            exciting  & amazing for you.<br>
+            
+            
+            </h2>
+            <h4 class="text-nothuge-title">
+            Our  mission is to Make Digital content Sharing    <br>            
+            Way More Profitable 
+            than it ever was
+            </h4>
+            
+
+            <div class="s-intro__content-bottom">
+
+                <div class="s-intro__content-bottom-block">
+                    <h5>Launching in</h5>
+        
+                    <div class="counter">
+                        <div class="counter__time">
+                            <span class="ss-days">000</span>
+                            <span>D</span>
+                        </div>
+                        <div class="counter__time">
+                            <span class="ss-hours">00</span>
+                            <span>H</span>
+                        </div>
+                        <div class="counter__time minutes">
+                            <span class="ss-minutes">00</span>
+                            <span>M</span>
+                        </div>
+                        <div class="counter__time">
+                            <span class="ss-seconds">00</span>
+                            <span>S</span>
+                        </div>
+                    </div>  <!-- end counter -->
+
+                </div> <!-- end s-intro-content__bottom-block -->
+
+                <div class="s-intro__content-bottom-block">
+
+                    <h5>Follow Us</h5>
+
+                    <ul class="social">
+                        <li><a href="">FB</a></li>
+                        <li><a href="">TW</a></li>
+                        <li><a href="">IG</a></li>
+                        <li><a href="">DB</a></li>
+                        <li><a href="">BH</a></li>
+                    </ul>
+
+                </div> <!-- end s-intro-content__bottom-block -->
+
+            </div> <!-- end s-intro-content__bottom -->
+
+        </div>
+    </div> <!-- s-intro__content -->
+
+    <!-- <div class="s-intro__notify">
+        <button type="button" class="btn--stroke btn--small ss-modal-trigger">
+            Notify Me
+        </button>
+    </div>  s-intro__notify -->
+
+    <div hidden class="s-intro__modal ss-modal">
+        <div class="ss-modal__inner">
+
+            <span class="ss-modal__close"></span>
+
+            <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30"><path d="M.5 4.5l7 4 7-4m-13-3h12a1 1 0 011 1v10a1 1 0 01-1 1h-12a1 1 0 01-1-1v-10a1 1 0 011-1z" stroke="var(--color-2-dark)"></path></svg>
+            
+            <h4>Sign Up</h4>
+
+            <p class="ss-modal__text">
+            Be the first to know about the latest updates and
+            get exclusive offer on our grand opening.
+            </p>
+
+            <form id="mc-form" class="mc-form">
+                <input type="email" name="EMAIL" id="mce-EMAIL" class="u-fullwidth text-center" placeholder="Email Address" title="The domain portion of the email address is invalid (the portion after the @)." pattern="^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*(\.\w{2,})+$" required>
+                <input type="submit" name="subscribe" value="Subscribe" class="btn--small btn--primary u-fullwidth">
+                <!-- <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_cdb7b577e41181934ed6a6a44_9a91cfe7b3" tabindex="-1" value=""></div> -->
+                <div class="mc-status"></div>
+            </form>
+
+        </div> <!-- end ss-modal__inner -->
+    </div> <!-- end ss-modal -->
+
+    <div class="s-intro__scroll">
+        <a href="#hidden" class="smoothscroll">
+            Scroll For More
+        </a>
+    </div> <!-- s-intro__scroll -->
+
+</section> <!-- end s-intro -->
+
+
+<!-- hidden element
+================================================== -->
+<div id="hidden" aria-hidden="true" style="opacity: 0;"></div>
+
+
+<!-- details
+================================================== -->
+<section id="details" class="s-details">
+
+    <div class="row">
+        <div class="column">
+
+            <h1 class="text-huge-title text-center">
+                Hi, We Are Contetor.
+            </h1>
+           <P>We are <span style="margin-right:10px;font-weight:bolder;color:brown;font-size:28px;">Creator Only</span> Media Sharing Platform<br></P> 
+            <nav class="tab-nav">
+                <ul class="tab-nav__list"> 
+                    <li class="active" data-id="tab-about">
+                        <a href="#0">
+                            <span>About</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav> <!-- end tab-nav -->
+
+            <div class="tab-content">
+
+                <!-- 01 - tab about -->
+                <div id="tab-about" class='tab-content__item'>
+
+            <div class="row tab-content__item-header">
+                <div class="column">
+                    <h2>What do we stand for?<br>Our Vision</h2>
+                </div>
+            </div>
+            <p>
+             
+                Our vision is to Create products that will allow <span style="margin-right:10px;font-weight:bolder;color:brown;font-size:28px;">
+                    Digital Content Creators</span>  to <span style="margin-right:10px;font-weight:bolder;color:brown;font-size:28px;">Monetize</span> their content and social presence More
+                efficiently.
+                </p>
+                <div class="row tab-content__item-header">
+                    <div class="column">
+                        <h3>Why Do We Exists?<br>Glad You Asked!</h3>
+                    </div>
+                </div>
+                <h5>A quick recap to get you going.</h5><br>
+                <p>
+                    In past 60 years or so of "The Internet",out of many thing that it has impacted,one 
+                    that stands at the top is ,"How it changed the content and Media Consumption Entirely."
+                        </p>
+                        <p>
+                        How with the advent of Social Media and platforms like YouTube and TikTok brought in billions of user 
+                        at the finguretip of Creators.<br>
+                        Like imagine being a "Painter" or "Artist In general" in 50's or even 60's.Getting known within a town 
+                        was more than acchievable for most of them and Forget about making sustainable earning throught their Art, 
+                        most of them had to survive in poverty.
+                        </p>
+                        <p>
+                        But in the world today Creators are previliged with the internet and the costless content sharing,
+                        that they  can use to gain millions of followers and hence thousands of dollers into their bank account per month.
+
+                        </p>
+                        <p>
+                        But Can Every Creator do that?<br>Can you just start Creating Contents and start making moeny out of it?<br>
+                        The obvious answer is No!Everyone knows it.<br>
+
+                        
+                        </p>
+                        <p>
+                        But Why Can't they?<br>
+                        If you look at the Internet today it's just content in some form be it Paintings, 
+                        Photogrphy, Memes, Poetry or Blogs in some form or Other.<br>
+                        And still Most of those creators gets nothing in return of what they create.
+                        </p>
+                        <h5>Before we continue, it is worth understanding who actually are Digital content creators?</h5>
+                        <p>
+                        "Digital Content Creators" is a refrence to any Individual or Business who are involved with creation
+                        of original content and sharing those content digitally to accquire userbase with the purpose of generating 
+                        revenue from it.
+                        </p>
+                        <h5>What's the problem of sharing content digitally?<br>
+                        And why is it the toughest time for creators to Grow?</h5>
+                        <p>
+                            Social Media and sharing contnet through it has some major drawbacks that can't be ignored.<br>
+                        </p> 
+                            <ul>
+                                <li>
+                                    <h5>Your Content Can't make money for you.</h5>
+                                    <p>
+                                        If you aren't creating video content, hardly is there chance that your content 
+                                        can make money for you.<i>"How Great it Might be."</i><br>
+                                        Insted it's your profile and followers that can make money for you.
+                                    </p>
+                                    <p>
+                                        Like in most of the cases a post with <i>"100K" likes</i> on Instagram is worth equal to that with <i>
+                                            "1 Like " on it.
+                                        </i><br>
+                                        You may argue that someone with "100k likes " will get to earn, but that post in itself never earns,
+                                        but insted the profile that earns for them.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h5>The algoritham trap</h5>
+                                    <p>
+                                        In the world today, where everyone wishes to become a content creator, each passing day
+                                        it's getting tougher to be able to create contents that isn't generating any value to you.<br>
+
+                                        For an average growth of first "10k " it takes a creator approximatly 3 years on Instagram.<br>
+
+                                        And Algoritham adding the cheery to cake, makes it nearly impossible for new creators to grow.<br>
+                                        Like the more your post performs, more user it is likely reach and to boost your performance you,
+                                        need more followers.<br>
+                                        And you are basically left with one of these two choices.<br>
+                                        <ul>
+                                            <li>
+                                                Wish that your content go Viral someday.
+                                            </li>
+                                            <li>
+                                                Keep Wishing untill that someday arrives.
+                                            </li>
+                                        </ul>
+                                    
+                                    </p>
+                                </li>
+                            </ul>
+                        <h5>So what can you as a creator Do?</h5>
+                        <p>
+                            Up untill now, your only chance was to keep wishing but now <br>
+                            <span style="margin-right:10px;font-weight:bolder;color:brown;font-size:28px;"><i>You have Contetor</i></span> 
+                            <br>A platform desgined specifically to help creator earn from each post that they create.
+
+                        </p>
+
+                        <p>
+                            To Know how are we willing to help creators and change the way content is shared digitally.<br>
+                           
+                        </p>
+            <a href="products.html">Browse our Products to learn more.</a>
+                </div> <!-- end 01 - tab about -->
+               
+                <!-- 02 - tab services -->
+               
+            <!-- footer  -->
+            <footer>
+                <div class="ss-copyright">
+                    <span>© Copyright CONTETOR 2022</span> 
+                    
+                </div>
+            </footer>
+
+        </div>
+    </div>
+
+    <div class="ss-go-top">
+        <a class="smoothscroll" title="Back to Top" href="#top">
+            <span>Back to Top</span>
+            <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path d="M7.5 1.5l.354-.354L7.5.793l-.354.353.354.354zm-.354.354l4 4 .708-.708-4-4-.708.708zm0-.708l-4 4 .708.708 4-4-.708-.708zM7 1.5V14h1V1.5H7z" fill="currentColor"></path></svg>
+            </a>
+    </div> <!-- end ss-go-top -->
+
+</section> <!-- end s-details -->
+
+
+<!-- Java Script
+================================================== -->
+<script>
+    function openNav() {
+        document.getElementById("myNav").style.width = "100%";
+      }
+      
+      /* Close */
+      function closeNav() {
+        document.getElementById("myNav").style.width = "0%";
+      }
+
+</script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+    <script src="js/particles.min.js"></script>
+    <script src="js/particle-settings.js"></script>
+</body>
+
+</html>
