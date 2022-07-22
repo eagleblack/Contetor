@@ -379,8 +379,7 @@
       
         }
       }
-    }
-    if(followerCount>=10000)
+            if(followerCount>=10000)
     {
      let point=10;
      newfollowerCount=followerCount/10000;
@@ -393,6 +392,8 @@
       finalScore=40+Math.round(newfollowerCount*3*(fakeCheckRatio/100))
 
     }
+    }
+    
     document.documentElement.scrollTop = 0;
     document.getElementById("console2").innerHTML = "Your Credit Score is="+finalScore;
     console.log(finalScore)
