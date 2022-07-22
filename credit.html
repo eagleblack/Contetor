@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+<!--- basic page needs
+================================================== -->
+<meta charset="utf-8">
+<title>Welcome To Contetor</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- mobile specific metas
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS
+================================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/vendor.css">
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- favicons
+================================================== -->
+<style>
+    input[type=number], select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    input[type=submit] {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+    
+    div {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+    </style>
+
+</head>
+
+<body >
+    <div style="text-align:center;">
+      <h3>Credit Score Generator</h3>
+      <p id="console2" style="font-size:15px;color:red; "></p>
+    </div>
+    
+    <div>
+          <label for="followerCount">Follower Count</label>
+          <input type="Number" id="followerCount" name="firstname" placeholder="">
+      
+          <label for="posrratio">Post Reach Ratio</label>
+          <label for="posrratio">Use any Number Betwen 0 and 2</label>
+          <input type="Number" id="posrratio" name="posrratio" placeholder="">
+
+          <label for="prearatio">Profile Reach Ratio:</label>
+          <label for="prearatio">Use any Number Betwen 0 and 2</label>
+          <input type="Number" id="prearatio" name="prearatio" placeholder="">
+
+          <label for="feRatio">Follower Engatement Ratio</label>
+          <label for="feRatio">Use any Number Betwen 0 and 1</label>
+          <input type="Number" id="feRatio" name="feRatio" placeholder="">
+
+    
+        
+          <input type="submit" value="Submit" onclick="submitForm();">
+      </div>
+      <script>
+        const constants={"FOLLOWER_COUNT":'',"PROFILE_REACH":'',"FOLLOWER_ENGAGEMENT":'',"POST_REACH":''};
+        
+     function submitForm(e)
+        {
+            const followerCount=document.getElementById("followerCount").value;
+         if(followerCount<100)
+          {
+          console.log(followerCount)
+          }
+           if(followerCount>=100 && followerCount<3000)
+          {
+            constants['FOLLOWER_COUNT']="EXTREMLY_LOW"
+          }
+          if(followerCount>=3000 && followerCount<10000)
+          {
+            constants['FOLLOWER_COUNT']="LOW"
+          }
+          if(followerCount>=10000 && followerCount<80000)
+          {
+            constants['FOLLOWER_COUNT']="MODERATE"
+          }
+          if(followerCount>=80000 && followerCount<600000)
+          {
+            constants['FOLLOWER_COUNT']="HIGH"
+          }
+          if(followerCount>=600000)
+          {
+            constants['FOLLOWER_COUNT']="EXTREMLY_HIGH"
+          }
+          //getting post ratio and setting it's value
+          const postReachratio=document.getElementById("posrratio").value;
+           if(postReachratio<=0.15)
+      {
+        constants['POST_REACH']="EXTREMLY_LOW"
+       
+      }
+      if(postReachratio>0.15 && postReachratio<0.4 )
+      {
+        constants['POST_REACH']="LOW"
+       
+      }
+      if(postReachratio>=0.4 && postReachratio<7 )
+      {
+        constants['POST_REACH']="MODERATE"
+        
+      }
+      if(postReachratio>=0.7 && postReachratio<1 )
+      {
+        constants['POST_REACH']="HIGH"
+        
+      }
+      if(postReachratio>=1 )
+      {
+        constants['POST_REACH']="EXTREMLY_HIGH"
+     
+      }
+      // setting profile Reach ratipo
+      const profileReachRatio=document.getElementById("prearatio").value;    
+      if(profileReachRatio<=0.15)
+      {
+        
+        constants['PROFILE_REACH']="EXTREMLY_LOW"
+    
+      }
+      if(profileReachRatio>0.15 && profileReachRatio<0.4 )
+      {
+        constants['PROFILE_REACH']="LOW"
+  
+      }
+      if(profileReachRatio>=0.4 && profileReachRatio<7 )
+      {
+        constants['PROFILE_REACH']="MODERATE"
+        
+      }
+      if(profileReachRatio>=0.7 && profileReachRatio<1 )
+      {
+        constants['PROFILE_REACH']="HIGH"
+    
+      }
+      if(profileReachRatio>=1 )
+      {
+        constants['PROFILE_REACH']="EXTREMLY_HIGH"
+        
+      }
+      //getting and setting follower Engagement ratio.
+      const followerEngagementratio=document.getElementById("feRatio").value;
+           if(followerEngagementratio<=0.15)
+      {
+        constants['FOLLOWER_ENGAGEMENT']="EXTREMLY_LOW"
+      
+      }
+      if(followerEngagementratio>0.15 && followerEngagementratio<0.4 )
+      {
+        constants['FOLLOWER_ENGAGEMENT']="LOW"
+      
+      }
+      if(followerEngagementratio>=0.4 && followerEngagementratio<7 )
+      {
+        constants['FOLLOWER_ENGAGEMENT']="MODERATE"
+       
+      }
+      if(followerEngagementratio>=0.7 && followerEngagementratio<1 )
+      {
+        constants['FOLLOWER_ENGAGEMENT']="HIGH"
+      }
+      if(followerEngagementratio>=1 )
+      {
+        constants['FOLLOWER_ENGAGEMENT']="EXTREMLY_HIGH"
+       
+      }
+           console.log(constants);
+      getResults();
+        }
+        function getResults()
+        {
+            let fakeCheckRatio;
+            let finalScore=0;
+            const followerCount=document.getElementById("followerCount").value;
+            const post_reach=document.getElementById("posrratio").value;
+            const profile_reach=document.getElementById("prearatio").value;
+            const followerEngagementratio=document.getElementById("feRatio").value; 
+            if(constants['FOLLOWER_COUNT']=="EXTREMLY_LOW" )
+        {
+             
+            finalScore=followerCount/100;
+
+         if(post_reach>0.7 && profile_reach>0.7)
+         {
+          finalScore=finalScore+10
+         }
+        
+            }
+        else
+        {
+             
+            if(followerEngagementratio>0.6)
+            {
+              if(followerEngagementratio>0.9)
+              {
+               fakeCheckRatio=100;
+              }
+              else
+              {
+                 fakeCheckRatio=80;
+              }
+            }
+           else
+           {
+        if(post_reach<0.15)
+        {
+      if(profile_reach<=0.15)
+      {
+        fakeCheckRatio=10;
+      }
+      if(profile_reach>0.15 && profile_reach<0.4 )
+      {
+       
+        fakeCheckRatio=12;
+      }
+      if(profile_reach>=0.4 && profile_reach<7 )
+      {
+       
+        fakeCheckRatio=15;
+      }
+      if(profile_reach>=0.7 && profile_reach<1 )
+      {
+       
+        fakeCheckRatio=18;
+      }
+      if(profile_reach>=1 )
+      {
+       
+        fakeCheckRatio=20;
+      }
+        }
+      if(post_reach>0.15 && post_reach<0.4 )
+        {
+          if(profile_reach<=0.15)
+      {
+        
+        fakeCheckRatio=15;
+    
+      }
+      if(profile_reach>0.15 && profile_reach<0.4 )
+      {
+        fakeCheckRatio=20;
+  
+      }
+      if(profile_reach>=0.4 && profile_reach<7 )
+      {
+        fakeCheckRatio=22;
+        
+      }
+      if(profile_reach>=0.7 && profile_reach<1 )
+      {
+        fakeCheckRatio=25;
+    
+      }
+      if(profile_reach>=1 )
+      {
+        fakeCheckRatio=30;
+        
+      }
+        
+        }
+        if(post_reach>=0.4 && post_reach<7 )
+        {
+      if(profile_reach<=0.15)
+      {
+        
+        fakeCheckRatio=25;
+    
+      }
+      if(profile_reach>0.15 && profile_reach<0.4 )
+      {
+        fakeCheckRatio=30;
+  
+      }
+      if(profile_reach>=0.4 && profile_reach<7 )
+      {
+        fakeCheckRatio=40;
+        
+      }
+      if(profile_reach>=0.7 && profile_reach<1 )
+      {
+        fakeCheckRatio=50;
+    
+      }
+      if(profile_reach>=1 )
+      {
+        fakeCheckRatio=60;
+        
+      }   
+          
+        }
+      if(post_reach>=0.7 && post_reach<1 )
+        {
+          if(profile_reach<=0.15)
+      {
+        
+        fakeCheckRatio=35;
+    
+      }
+      if(profile_reach>0.15 && profile_reach<0.4 )
+      {
+        fakeCheckRatio=40;
+  
+      }
+      if(profile_reach>=0.4 && profile_reach<7 )
+      {
+       
+        fakeCheckRatio=50;
+      }
+      if(profile_reach>=0.7 && profile_reach<1 )
+      {
+        fakeCheckRatio=55;
+    
+      }
+      if(profile_reach>=1 )
+      {
+       
+        fakeCheckRatio=65;
+      }   
+          
+        }
+        if(post_reach>=1 )
+        {
+          if(profile_reach<=0.15)
+      {
+        
+        fakeCheckRatio=40;
+    
+      }
+      if(profile_reach>0.15 && profile_reach<0.4 )
+      {
+       
+        fakeCheckRatio=45;
+      }
+      if(profile_reach>=0.4 && profile_reach<7 )
+      {
+        fakeCheckRatio=50;
+        
+      }
+      if(profile_reach>=0.7 && profile_reach<1 )
+      {
+        fakeCheckRatio=60;
+    
+      }
+      if(profile_reach>=1 )
+      {
+        fakeCheckRatio=70;
+        
+      }
+      
+        }
+      }
+    }
+    if(followerCount>=10000)
+    {
+     let point=10;
+     newfollowerCount=followerCount/10000;
+     finalScore=61+Math.round(newfollowerCount*10*(fakeCheckRatio/100))
+    }
+    else
+    {
+      let point =3
+      newfollowerCount=followerCount/1000;
+      finalScore=40+Math.round(newfollowerCount*3*(fakeCheckRatio/100))
+
+    }
+    document.documentElement.scrollTop = 0;
+    document.getElementById("console2").innerHTML = "Your Credit Score is="+finalScore;
+    console.log(finalScore)
+    
+    }
+    </script>
+</body>
+</html>
